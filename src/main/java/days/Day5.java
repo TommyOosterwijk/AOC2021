@@ -12,7 +12,7 @@ public class Day5 implements DayInterface {
     AocUtils utils = new AocUtils();
     List<Line> lines = new ArrayList<>();
 
-    Integer[][] board;
+    int[][] board;
     int boardX = 0, boardY = 0;
 
 
@@ -49,7 +49,7 @@ public class Day5 implements DayInterface {
             lines.add(lineObj);
         }
 
-        board = new Integer[boardY+1][boardX+1];
+        board = new int[boardY+1][boardX+1];
         getAnswerA();
         getAnswerB();
     }
@@ -63,35 +63,19 @@ public class Day5 implements DayInterface {
             if(line.startY == line.endY) {
 
                 for(int x = line.startX; x <= line.endX; x++) {
-                    if(board[line.startY][x] == null) {
-                        board[line.startY][x] = 1;
-                    } else {
-                        board[line.startY][x] += 1;
-                    }
+                    board[line.startY][x]++;
                 }
 
                 for(int x = line.endX; x <= line.startX; x++) {
-                    if(board[line.startY][x] == null) {
-                        board[line.startY][x] = 1;
-                    } else {
-                        board[line.startY][x] += 1;
-                    }
+                    board[line.startY][x]++;
                 }
             } else if(line.startX == line.endX) {
                 for(int y = line.startY; y <= line.endY; y++) {
-                    if(board[y][line.startX] == null) {
-                        board[y][line.startX] = 1;
-                    } else {
-                        board[y][line.startX] += 1;
-                    }
+                    board[y][line.startX]++;
                 }
 
                 for(int y = line.endY; y <= line.startY; y++) {
-                    if(board[y][line.startX] == null) {
-                        board[y][line.startX] = 1;
-                    } else {
-                        board[y][line.startX] += 1;
-                    }
+                    board[y][line.startX]++;
                 }
             }
         }
@@ -100,7 +84,7 @@ public class Day5 implements DayInterface {
         int result = 0;
         for(int y = 0; y < boardY+1; y++) {
             for(int x = 0; x < boardX+1; x++) {
-                if(board[y][x] != null &&  board[y][x] > 1) {
+                if(board[y][x] > 1) {
                     result++;
                 }
             }
@@ -119,34 +103,21 @@ public class Day5 implements DayInterface {
                     for(int y1 = line.startY; y1 <= line.endY; y1++) {
                         int startX = line.startX;
                         if(startX < line.endX) {
-                            if(board[y1][startX + stepCounter] == null) {
-                                board[y1][startX+ stepCounter] = 1;
-                            } else {
-                                board[y1][startX+ stepCounter] += 1;
-                            }
+
+                            board[y1][startX+ stepCounter]++;
+
                         } else {
-                            if(board[y1][startX - stepCounter] == null) {
-                                board[y1][startX- stepCounter] = 1;
-                            } else {
-                                board[y1][startX- stepCounter] += 1;
-                            }
+
+                            board[y1][startX- stepCounter]++;
                         }
                         stepCounter++;
                     }
                     for(int y1 = line.endY; y1 <= line.startY; y1++) {
                         int startX = line.endX;
                         if(startX < line.startX) {
-                            if(board[y1][startX + stepCounter] == null) {
-                                board[y1][startX+ stepCounter] = 1;
-                            } else {
-                                board[y1][startX+ stepCounter] += 1;
-                            }
+                            board[y1][startX+ stepCounter]++;
                         } else {
-                            if(board[y1][startX - stepCounter] == null) {
-                                board[y1][startX- stepCounter] = 1;
-                            } else {
-                                board[y1][startX- stepCounter] += 1;
-                            }
+                            board[y1][startX- stepCounter]++;
                         }
                         stepCounter++;
                     }
@@ -158,7 +129,7 @@ public class Day5 implements DayInterface {
         int result = 0;
         for (int y = 0; y < boardY + 1; y++) {
             for (int x = 0; x < boardX + 1; x++) {
-                if (board[y][x] != null && board[y][x] > 1) {
+                if (board[y][x] > 1) {
                     result++;
                 }
             }
@@ -171,7 +142,7 @@ public class Day5 implements DayInterface {
         for (int y = 0; y < boardY + 1; y++) {
             for (int x = 0; x < boardX + 1; x++) {
 
-                if (board[y][x] == null) {
+                if (board[y][x] == 0) {
                     System.out.print(".");
                 } else {
                     System.out.print(board[y][x]);
