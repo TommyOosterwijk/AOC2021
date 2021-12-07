@@ -9,5 +9,6 @@ public class Main {
         Day4 day4 = new Day4();
         Day5 day5 = new Day5();
         Day6 day6 = new Day6();
+        Day7 day7 = new Day7();
     }
 }
