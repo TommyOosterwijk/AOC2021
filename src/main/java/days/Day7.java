@@ -71,7 +71,7 @@ public class Day7 implements DayInterface {
     }
 
     public void getAnswerBFaster() {
-        int lowIndex = 0;
+        int lowIndex = crabPositions.get(0);
         int highIndex = crabPositions.get(crabPositions.size()-1);
         int targetIndex = highIndex / 2;
         int result = 0;
