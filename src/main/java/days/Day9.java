@@ -29,7 +29,7 @@ public class Day9 implements DayInterface {
 
         getAnswerA();
         map = new Boolean[maxY][maxX];
-        getAnswerB();
+        //getAnswerB();
         getAnswerBAgain();
     }
 
@@ -106,7 +106,12 @@ public class Day9 implements DayInterface {
         }
         List<Integer> result = basinSizeCounter.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
         //System.out.println(result);
-        System.out.println("B: " + (result.get(0) * result.get(1) * result.get(2)));
+        int resultB = 0;
+        for(int i = 0; i < result.size(); i++) {
+            System.out.println(result.get(i));
+            resultB += result.get(i);
+        }
+        System.out.println("B) = "+ resultB);
 
 //        for(int y = 0; y < maxY; y++) {
 //            for (int x = 0; x < maxX; x++) {
@@ -173,6 +178,7 @@ public class Day9 implements DayInterface {
         }
 
         sizes.sort(Comparator.reverseOrder());
+
         System.out.println("B) new = "+ sizes.get(0) * sizes.get(1) * sizes.get(2));
     }
 
@@ -182,13 +188,14 @@ public class Day9 implements DayInterface {
             String position = "y"+y+"x"+x;
             if(!basinList.contains(position)) {
                 int value = getValueFromMap(y, x);
-                if(Math.abs(value - previousValue) == 1 && value != 9) {
+                if(value != 9) {
                     basinList.add(position);
 
                     basinList = getBasin(y-1, x, value, basinList);
                     basinList = getBasin(y+1, x, value, basinList);
                     basinList = getBasin(y, x-1, value, basinList);
                     basinList = getBasin(y, x+1, value, basinList);
+
                 }
             }
         }
