@@ -37,4 +37,17 @@ public class AocUtils {
     private List<Integer> convertFileToArray(String path) throws IOException {
         return Files.lines(Paths.get("src/main/resources/"+path)).map(Integer::parseInt).collect(Collectors.toList());
     }
+
+    public boolean isLocationInGrid(int x, int y, int maxX, int maxY) {
+        return x>=0 && x < maxX && y >= 0 && y < maxY;
+    }
+
+    public void printBoard(int[][] grid, int maxY, int maxX){
+        for(int y = 0; y < maxY; y++) {
+            for(int x = 0; x < maxX; x++) {
+                System.out.print(grid[y][x]);
+            }
+            System.out.println();
+        }
+    }
 }
