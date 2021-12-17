@@ -29,7 +29,7 @@ public class Day15 implements DayInterface {
         for( int y2 = 0; y2 < maxY; y2++) {
             for( int x2 = 0; x2 < maxX; x2++) {
                 value[y2][x2] = 0;
-                totalValue[y2][x2] = 0;
+                totalValue[y2][x2] = -1;
                 hasVisited[y2][x2] =  false;
             }
         }
