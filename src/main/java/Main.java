@@ -18,10 +18,11 @@ public class Main {
         Day13 day13 = new Day13();
         Day14 day14 = new Day14();
        //DONE Day15 day15 = new Day15();
-        Day16 day16 = new Day16();
+        //Day16 day16 = new Day16();
         //Day17 day17 = new Day17();
         //Day18 day18 = new Day18();
         //Day19 day19 = new Day19();
-        Day20 day20 = new Day20();
+       // Day20 day20 = new Day20();
+        Day21 day21 = new Day21();
     }
 }
