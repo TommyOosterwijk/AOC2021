@@ -28,8 +28,6 @@ public class Day11 implements DayInterface {
         getAnswerB();
     }
 
-
-
     @Override
     public void getAnswerA() {
         int flashCounter = 0;
@@ -58,22 +56,16 @@ public class Day11 implements DayInterface {
         grid[y][x]++;
 
         if(grid[y][x] == 10) {
-
             flashNeighbours(y, x);
-
         }
     }
 
     private void flashNeighbours(int y, int x) {
         for(int i = 0; i <  neighbourLocations.length; i++) {
-            if(isLocationInGrid(y+neighbourLocations[i][0], x+neighbourLocations[i][1])) {
+            if(utils.isLocationInGrid(y+neighbourLocations[i][0], x+neighbourLocations[i][1], 10, 10)) {
                 increaseEnergy(y+neighbourLocations[i][0], x+neighbourLocations[i][1]);
             }
         }
-    }
-
-    private boolean isLocationInGrid(int y, int x) {
-        return utils.isLocationInGrid(y, x, 10, 10);
     }
 
     @Override

@@ -26,7 +26,6 @@ public class Day13 implements DayInterface {
                     int x = 0,y = 0;
 
                     String[] foldLine = line.split("=");
-                    System.out.println(foldLine[0].charAt(foldLine[0].length() -1));
                     if(foldLine[0].charAt(foldLine[0].length() -1) == 'y') {
                         y = maxY -1;
                         maxY  = maxY / 2;
@@ -34,7 +33,6 @@ public class Day13 implements DayInterface {
                     } else {
                         x = maxX -1;
                         maxX  = maxX / 2;
-
                     }
 
                     foldGrid(y, x);

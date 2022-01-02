@@ -1,12 +1,12 @@
 package days;
 
-import utils.Utils;
+import utils.AocUtils;
 
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.Scanner;
 
-public class Day2 {
+public class Day2 implements DayInterface {
 
     int positionA = 0;
     int depthA = 0;
@@ -27,7 +27,7 @@ public class Day2 {
         getAnswerB();
 
     }
-    Utils utils = new Utils();
+    AocUtils utils = new AocUtils();
 
     public void updatePosition(String dir, int step) {
         if(dir.equals("forward")) {

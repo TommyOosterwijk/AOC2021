@@ -1,26 +1,20 @@
 package days;
 
-import utils.Utils;
-
-import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
+import utils.AocUtils;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
-public class Day1 {
+public class Day1 implements DayInterface {
 
-    ArrayList<Integer> numbers = new ArrayList();
+    AocUtils utils = new AocUtils();
+    List<Integer> numbers = new ArrayList();
 
-    public Day1() throws FileNotFoundException, URISyntaxException {
+    public Day1() {
 
-        Scanner scanner = utils.getScannerFromFileName("Day1.txt");
-        while (scanner.hasNextInt()) {
-            numbers.add(scanner.nextInt());
-        }
+        numbers = utils.getIntegerListFromFile("Day1.txt");
         getAnswerA();
         getAnswerB();
     }
-    Utils utils = new Utils();
 
 
     public void getAnswerA() {

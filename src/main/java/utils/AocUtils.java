@@ -50,4 +50,23 @@ public class AocUtils {
             System.out.println();
         }
     }
+
+    public void printBoard(String[][] grid, int maxY, int maxX){
+        for(int y = 0; y < maxY; y++) {
+            for(int x = 0; x < maxX; x++) {
+                System.out.print(grid[y][x]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public void printBoard(List<Integer> grid, int maxY, int maxX){
+        for(int y = 0; y < maxY; y++) {
+            for(int x = 0; x < maxX; x++) {
+                System.out.print(grid.get((y*maxX) + x) + " ");
+            }
+            System.out.println();
+        }
+    }
 }

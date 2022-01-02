@@ -12,7 +12,7 @@ public class Day12 implements DayInterface {
 
     AocUtils utils = new AocUtils();
 
-    List<Cave> caveList = new ArrayList<>();
+    List<Caveday12> caveday12List = new ArrayList<>();
 
     public Day12() throws FileNotFoundException, URISyntaxException {
         System.out.println("Day12!");
@@ -27,34 +27,30 @@ public class Day12 implements DayInterface {
             boolean cave1Found =  false;
             boolean cave2Found =  false;
 
-            for(Cave cave : caveList) {
-                if( cave.name.equals(caveName1)) {
-                    cave.pathToCave.add(caveName2);
+            for(Caveday12 caveday12 : caveday12List) {
+                if( caveday12.name.equals(caveName1)) {
+                    caveday12.pathToCave.add(caveName2);
                     cave1Found = true;
                 }
 
-                if( cave.name.equals(caveName2)) {
-                    cave.pathToCave.add(caveName1);
+                if( caveday12.name.equals(caveName2)) {
+                    caveday12.pathToCave.add(caveName1);
                     cave2Found = true;
                 }
-
             }
 
-
             if(!cave2Found) {
-                Cave cave = new Cave();
-                cave.name = caveName2;
-                cave.pathToCave.add(caveName1);
-                caveList.add(cave);
-
+                Caveday12 caveday12 = new Caveday12();
+                caveday12.name = caveName2;
+                caveday12.pathToCave.add(caveName1);
+                caveday12List.add(caveday12);
             }
 
             if(!cave1Found) {
-                Cave cave = new Cave();
-                cave.name = caveName1;
-                cave.pathToCave.add(caveName2);
-                caveList.add(cave);
-
+                Caveday12 caveday12 = new Caveday12();
+                caveday12.name = caveName1;
+                caveday12.pathToCave.add(caveName2);
+                caveday12List.add(caveday12);
             }
 
         }
@@ -67,15 +63,16 @@ public class Day12 implements DayInterface {
     public void getAnswerA() {
         int result = 0;
 
-        for(Cave cave : caveList) {
-            if(cave.name.equals("start")) {
+        for(Caveday12 caveday12 : caveday12List) {
+            if(caveday12.name.equals("start")) {
                 //lets go!
-                for(int i = 0; i < cave.pathToCave.size(); i++) {
+                for(int i = 0; i < caveday12.pathToCave.size(); i++) {
                     List<String> pathList = new ArrayList<>();
-                    pathList.add(cave.name);
+                    pathList.add(caveday12.name);
 
-                    result += findPathA(cave.pathToCave.get(i), pathList);
+                    result += findPathA(caveday12.pathToCave.get(i), pathList);
                 }
+                break;
             }
         }
         System.out.println("A) " + result);
@@ -90,21 +87,23 @@ public class Day12 implements DayInterface {
         if(!pathList.contains(caveName)) {
             pathList.add(caveName);
 
-            for(Cave cave : caveList) {
-                if(cave.name.equals(caveName)) {
-                    for(int i = 0; i < cave.pathToCave.size(); i++) {
-                        result += findPathA(cave.pathToCave.get(i), new ArrayList<>(pathList));
+            for(Caveday12 caveday12 : caveday12List) {
+                if(caveday12.name.equals(caveName)) {
+                    for(int i = 0; i < caveday12.pathToCave.size(); i++) {
+                        result += findPathA(caveday12.pathToCave.get(i), new ArrayList<>(pathList));
                     }
+                    break;
                 }
             }
         } else {
             if(!isSmallCave(caveName)) {
                 pathList.add(caveName);
-                for(Cave cave : caveList) {
-                    if(cave.name.equals(caveName)) {
-                        for(int i = 0; i < cave.pathToCave.size(); i++) {
-                            result += findPathA(cave.pathToCave.get(i), new ArrayList<>(pathList));
+                for(Caveday12 caveday12 : caveday12List) {
+                    if(caveday12.name.equals(caveName)) {
+                        for(int i = 0; i < caveday12.pathToCave.size(); i++) {
+                            result += findPathA(caveday12.pathToCave.get(i), new ArrayList<>(pathList));
                         }
+                        break;
                     }
                 }
             }
@@ -120,15 +119,16 @@ public class Day12 implements DayInterface {
     public void getAnswerB() {
         int result = 0;
 
-        for(Cave cave : caveList) {
-            if(cave.name.equals("start")) {
+        for(Caveday12 caveday12 : caveday12List) {
+            if(caveday12.name.equals("start")) {
                 //lets go!
-                for(int i = 0; i < cave.pathToCave.size(); i++) {
+                for(int i = 0; i < caveday12.pathToCave.size(); i++) {
                     List<String> pathList = new ArrayList<>();
-                    pathList.add(cave.name);
+                    pathList.add(caveday12.name);
 
-                    result += findPathB(cave.pathToCave.get(i), pathList, false);
+                    result += findPathB(caveday12.pathToCave.get(i), pathList, false);
                 }
+                break;
             }
         }
         System.out.println("B) " + result);
@@ -147,32 +147,34 @@ public class Day12 implements DayInterface {
         if(!pathList.contains(caveName)) {
             pathList.add(caveName);
 
-            for(Cave cave : caveList) {
-                if(cave.name.equals(caveName)) {
-                    for(int i = 0; i < cave.pathToCave.size(); i++) {
-                        result += findPathB(cave.pathToCave.get(i), new ArrayList<>(pathList), hasDoubleSmall);
+            for(Caveday12 caveday12 : caveday12List) {
+                if(caveday12.name.equals(caveName)) {
+                    for(int i = 0; i < caveday12.pathToCave.size(); i++) {
+                        result += findPathB(caveday12.pathToCave.get(i), new ArrayList<>(pathList), hasDoubleSmall);
                     }
+                    break;
                 }
             }
         } else {
             if(!isSmallCave(caveName)) {
                 pathList.add(caveName);
-                for(Cave cave : caveList) {
-                    if(cave.name.equals(caveName)) {
-                        for(int i = 0; i < cave.pathToCave.size(); i++) {
-                            result += findPathB(cave.pathToCave.get(i), new ArrayList<>(pathList), hasDoubleSmall);
+                for(Caveday12 caveday12 : caveday12List) {
+                    if(caveday12.name.equals(caveName)) {
+                        for(int i = 0; i < caveday12.pathToCave.size(); i++) {
+                            result += findPathB(caveday12.pathToCave.get(i), new ArrayList<>(pathList), hasDoubleSmall);
                         }
+                        break;
                     }
                 }
             } else {
-
                 if(!hasDoubleSmall) {
                     pathList.add(caveName);
-                    for(Cave cave : caveList) {
-                        if(cave.name.equals(caveName)) {
-                            for(int i = 0; i < cave.pathToCave.size(); i++) {
-                                result += findPathB(cave.pathToCave.get(i), new ArrayList<>(pathList), true);
+                    for(Caveday12 caveday12 : caveday12List) {
+                        if(caveday12.name.equals(caveName)) {
+                            for(int i = 0; i < caveday12.pathToCave.size(); i++) {
+                                result += findPathB(caveday12.pathToCave.get(i), new ArrayList<>(pathList), true);
                             }
+                            break;
                         }
                     }
                 }

@@ -19,9 +19,7 @@ public class Day4 implements DayInterface {
 
         Scanner scanner = utils.getScannerFromFileName("Day4.txt");
 
-        String inputNumbers = scanner.nextLine();
-        bingoNunmbers = inputNumbers.split(",");
-
+        bingoNunmbers = scanner.nextLine().split(",");
 
         while (scanner.hasNextLine()) {
             String numberLine = scanner.nextLine();
